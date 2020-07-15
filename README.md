@@ -1,4 +1,4 @@
-# Ticker purchase
+# Ticket purchase assigment
 Ticket purchase functionality that is a result of job interview assigment
 
 # Requirements
