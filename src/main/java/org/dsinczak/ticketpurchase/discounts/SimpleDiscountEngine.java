@@ -19,8 +19,8 @@ public class SimpleDiscountEngine implements DiscountEngine {
 
     private final Set<DiscountRule> rules;
 
-    public SimpleDiscountEngine(Set<DiscountRule> rules) {
-        this.rules = rules;
+    public SimpleDiscountEngine(java.util.Set<DiscountRule> rules) {
+        this.rules = HashSet.ofAll(rules);
     }
 
     @Override
@@ -42,8 +42,9 @@ public class SimpleDiscountEngine implements DiscountEngine {
         @Override
         public Option<Discount> apply(Customer customer, Tenant tenant, Flight flight, DayOfWeek dayOfWeek) {
             var today = LocalDate.now();
-            if (today.getMonth()==customer.getDateOfBirth().getMonth() && today.getDayOfWeek() == customer.getDateOfBirth().getDayOfWeek()) {
-                return Option.of(new Discount(Money.of(5, "PLN"),"Birthday discount"));
+            if (today.getMonth() == customer.getDateOfBirth().getMonth()
+                    && today.getDayOfMonth() == customer.getDateOfBirth().getDayOfMonth()) {
+                return Option.of(new Discount(Money.of(5, "PLN"), "Birthday discount"));
             }
             return Option.none();
         }
@@ -54,10 +55,10 @@ public class SimpleDiscountEngine implements DiscountEngine {
 
         @Override
         public Option<Discount> apply(Customer customer, Tenant tenant, Flight flight, DayOfWeek dayOfWeek) {
-           if(dayOfWeek.equals(DayOfWeek.THURSDAY) && flight.getRoute().isToContinent(Continent.AF)) {
-               return Option.of(new Discount(Money.of(5, "PLN"),"Thursday Africa flight discount"));
-           }
-           return Option.none();
+            if (dayOfWeek.equals(DayOfWeek.THURSDAY) && flight.getRoute().isToContinent(Continent.AF)) {
+                return Option.of(new Discount(Money.of(5, "PLN"), "Thursday Africa flight discount"));
+            }
+            return Option.none();
         }
     }
 

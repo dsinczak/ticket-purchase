@@ -19,6 +19,10 @@ public class Flight {
     @Value
     public static class FlightId {
         UUID uuid;
+
+        public static FlightId random() {
+            return new FlightId(UUID.randomUUID());
+        }
     }
 
     @Value

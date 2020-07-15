@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
-import java.util.Set;
 
 import static org.dsinczak.ticketpurchase.domain.DomainError.FLIGHT_DAY_NOT_SUPPORTED;
 import static org.dsinczak.ticketpurchase.domain.DomainError.UNKNOWN_TENANT_TYPE;
@@ -43,7 +42,7 @@ public interface BookingFactory {
 
         @Override
         public Either<DomainError, Booking> create(Customer customer, Tenant tenant, Flight flight, DayOfWeek dayOfWeek) {
-            if(!flight.getDays().contains(dayOfWeek)) {
+            if (!flight.getDays().contains(dayOfWeek)) {
                 // This is just single validation. I suppose this would extend in
                 // PRD code so io.vavr.control.Validation would be the best choice
                 // to do so (and it smoothly integrates with Either).

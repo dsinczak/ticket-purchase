@@ -15,5 +15,9 @@ public class Tenant {
     @Value
     public static class TenantId {
         UUID uuid;
+
+        public static TenantId random(){
+            return new TenantId(UUID.randomUUID());
+        }
     }
 }

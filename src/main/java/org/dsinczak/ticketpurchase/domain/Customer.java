@@ -14,5 +14,9 @@ public class Customer {
     @Value
     public static class CustomerId {
         UUID uuid;
+
+        public static CustomerId random() {
+            return new CustomerId(UUID.randomUUID());
+        }
     }
 }

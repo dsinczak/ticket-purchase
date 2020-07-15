@@ -15,7 +15,7 @@ public interface DiscountApplyPolicy {
     class ThresholdDiscountApplyPolicy implements DiscountApplyPolicy {
 
         // This might be a subject of moving to configuration
-        private static final Money THRESHOLD = Money.of(20, "PLN");
+        private static final Money THRESHOLD = Money. of(20, "PLN");
 
         @Override
         public AppliedDiscounts calculate(Money flightPrice, Set<Discount> discounts) {
