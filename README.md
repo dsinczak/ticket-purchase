@@ -1,16 +1,16 @@
 # Ticket purchase assigment
 Ticket purchase functionality that is a result of job interview assigment
 
-# Requirements
+## Requirements
 Please implement the functionality that adds a discount to flight ticket
 
-## Basic concepts:
+### Basic concepts:
 * Tenant - the system enables use by many clients at once. Such a customer is called a tenant. Each tenant belongs to one of the groups A or B.
 Warning! There is a difference in functionality between the A and B type tenant.
 * Flight - contains the ID contains the route from, to, hour and days of the week of departure.
 * Flight price - the price of a flight, which can be different for different dates and times
 
-## Feature discount calculation
+### Feature discount calculation
 The system is to enable the purchase of a flight, which for simplicity consists of that
 the buyer gives the flight id and provides the tenant (in other words
 use case is buyFlight(FlightId flightId, TenantId tenantId).
@@ -32,9 +32,15 @@ Thursday to Africa. Both criteria were used, so the final price is 20 euros
 The flight price is 21 euros and the buyer has a birthday today. Cannot be used
 no criterion because the price would be below 20 euros.
 
-### USE CASE specific to group A tenant
+#### USE CASE specific to group A tenant
 * The system should record what discount criteria have been applied to
 every purchase
 
-### USE CASE specific for group B tenant
+#### USE CASE specific for group B tenant
 * The system is NOT allowed to save the criteria used for the purchase
+
+### Solution
+I based the solution on a classic technological stack (java + spring), so no water jets and slides. As a curiosity, I added the vavr library to show a different approach to composition and error handling.
+
+#### Tests (or rather the lack of them)
+The task was to show how I would model the problem and that's where I stopped programming. Each of the components that I have created is fully unit / component and integration testable. The architecture of the solution allows for compositions from small independent units thanks to the use of design patterns.
